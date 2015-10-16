@@ -1,0 +1,21 @@
+{
+  "name": "bandcamp",
+  "version": "0.0.1",
+  "homepage": "https://github.com/copasetickid/bandcamp",
+  "authors": [
+    "Rushaine McBean <rushaine.mcbean@gmail.com>"
+  ],
+  "description": "Project management app",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+      "bootstrap": "4.0"
+  }
+}

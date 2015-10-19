@@ -1,4 +1,4 @@
-<%= form_for(@project) do |f| %>
+<%= simple_form_for(@project) do |f| %>
   <% if @project.errors.any? %>
    <div id="error_explanation">
      <h2><%= pluralize(@project.errors.count, "error") %>
@@ -7,16 +7,14 @@
        <% @project.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
        <% end %>
-    </ul> 
+    </ul>
   </div>
 <% end %>
   <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.input :name %>
   </p>
     <p>
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.input  :description %>
   </p>
   <%= f.submit %>
 <% end %>

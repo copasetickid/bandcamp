@@ -10,11 +10,8 @@
     </ul>
   </div>
 <% end %>
-  <p>
-    <%= f.input :name %>
-  </p>
-    <p>
-    <%= f.input  :description %>
-  </p>
-  <%= f.submit %>
+
+  <%= f.input :name %>
+  <%= f.input  :description %>
+  <%= f.submit, class: "btn-primary" %>
 <% end %>

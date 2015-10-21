@@ -1,3 +1,6 @@
+body {
+	padding-top: 70px;
+}
 
 .page-header {
   	position: relative;
@@ -57,4 +60,8 @@ a.delete {
 
 form {
 	max-width: 500px;
+}
+
+@media(max-width: 500px) {
+	p { color: red; }
 }

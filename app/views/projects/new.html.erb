@@ -1,26 +1,4 @@
-<h1>New Project</h1>
-
-<% if @project.errors.any? %>
-	<div id="error-explantion">
-		<h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from ebing saved.</h2>
-		<ul>
-		<% @project.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-		<% end %>
-		</ul>
-	</div>
-<% end %>
-
-<%= form_for(@project) do |f| %>
-	<p>	
-		<%= f.label :name %><br>
-		<%= f.text_field :name %>
-	</p>
-
-	<p>
-		<%= f.label :description %><br>
-		<%= f.text_area :description %>
-	</p>
-
-	<%= f.submit %>
-<% end %>
+<header>
+	<h1>New Project</h1>
+</header>
+<%= render "form", project: @project %>

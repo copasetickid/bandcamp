@@ -26,12 +26,19 @@ class TicketsController < ApplicationController
 
 	def update
 		if @ticket.update(ticket_params)
-			flash[:notice] = "Ticket has not been updated."
+			flash[:notice] = "Ticket has been updated."
 			redirect_to [@project, @ticket]
 		else
 			flash.now[:alert] = "Ticket has not been updated."
 			render "edit"
 		end
+	end
+
+	def destroy
+		@ticket.destroy
+		flash[:notice] = "Ticket has been deleted."
+
+		redirect_to @project
 	end
 
 	private

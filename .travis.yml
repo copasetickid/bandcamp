@@ -9,5 +9,7 @@ before_script:
   - cp config/secrets-sample.yml.travis config/secrets.yml
   - cp config/database-sample.yml.travis config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
+  - npm install bower
+  - bower install
 addons:
   postgresql: "9.3"

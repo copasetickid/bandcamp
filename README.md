@@ -1,3 +1,1 @@
-== BANDCAMP
-
-https://travis-ci.org/copasetickid/bandcamp.svg?branch=travis-config
+== BANDCAMP [![Build Status](https://travis-ci.org/copasetickid/bandcamp.svg)](https://travis-ci.org/copasetickid/bandcamp)

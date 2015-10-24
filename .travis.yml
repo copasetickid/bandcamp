@@ -6,6 +6,6 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 before_script:
-  - cp config/database.yml.travis config/database.yml
+  - cp config/database-sample.yml.travis config/database.yml
 addons:
   postgresql: "9.3"

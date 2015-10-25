@@ -9,6 +9,7 @@
 
 # Ignore all logfiles and tempfiles.
 *.rbc
+*.DS_Store
 capybara-*.html
 .rspec
 /log

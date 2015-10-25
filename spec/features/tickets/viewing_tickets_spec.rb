@@ -2,11 +2,13 @@ require "rails_helper"
 
 RSpec.feature "Users can view tickets" do
   before do
+    author = create(:user)
+
     @pringles = create(:project, name: "Pringles")
-    create(:ticket, project: @pringles, name: "Make it shiny!", description: "Gradients! Starbursts! Oh my!")
+    create(:ticket, project: @pringles, author: author, name: "Make it shiny!", description: "Gradients! Starbursts! Oh my!")
 
     chrome = create(:project, name: "Google Chrome")
-    create(:ticket, project: chrome, name: "Standards compliance", description: "Isn't a joke.")
+    create(:ticket, project: chrome,author: author, name: "Standards compliance", description: "Isn't a joke.")
 
     visit root_path
   end

@@ -1,7 +1,10 @@
 require "rails_helper"
 
 RSpec.feature "Users can create new tickets" do
+	let(:user) { create(:user) }
+
 	before do
+		login_as(user)
 		project = create(:project, name: "Google Chrome")
 
 		visit project_path(project)
@@ -14,6 +17,9 @@ RSpec.feature "Users can create new tickets" do
 		click_button "Create Ticket"
 
 		expect(page).to have_content "Ticket has been created."
+		within "#ticket" do
+			expect(page).to have_content "Author: #{user.email}"
+		end
 	end
 
 	scenario "when providing invalid attributes" do

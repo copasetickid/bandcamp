@@ -1,8 +1,11 @@
 require "rails_helper"
 
 RSpec.feature "Users can edit existing tickets" do
+  let(:author) { create(:user) }
   let(:project) { create(:project) }
-  let(:ticket)  { create(:ticket, project: project) }
+  let(:ticket)  do
+    create(:ticket, project: project, author: author)
+  end
 
   before do
     visit project_ticket_path(project, ticket)

@@ -1,12 +1,10 @@
 class ProjectsController < ApplicationController
-	before_action :project_lookup, only: [:edit, :show, :update, :destroy]
+	before_action :project_lookup, only: [:edit, :show, :update]
+
 	def index
 		@projects = Project.all
 	end
 
-	def new
-		@project = Project.new
-	end
 
 	def edit
 	end
@@ -14,17 +12,6 @@ class ProjectsController < ApplicationController
 	def show
 	end
 
-	def create
-		@project = Project.new(project_params)
-
-		if @project.save 
-			flash[:notice] = "Project has been created."
-			redirect_to @project
-		else
-			flash.now[:alert] = "Project has not been created."
-			render "new"
-		end
-	end
 
 	def update
 		if @project.update(project_params)
@@ -36,14 +23,7 @@ class ProjectsController < ApplicationController
 		end
 	end
 
-	def destroy
-		@project.destroy
-
-		flash[:notice] = "Project has been deleted."
-		redirect_to projects_path
-	end
-
-	private 
+	private
 
 	def project_params
 		params.require(:project).permit(:name, :description)

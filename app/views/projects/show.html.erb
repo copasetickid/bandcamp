@@ -10,7 +10,7 @@
 		<% end %>
 	</li>
 	<li>
-		<%= link_to  project_path(@project), class: "delete", method: :delete, data: { confirm: "Are you sure you want to delete this project" } do %>
+		<%= link_to  admin_project_path(@project), class: "delete", method: :delete, data: { confirm: "Are you sure you want to delete this project" } do %>
 			<i class="fa fa-trash"></i>Delete Project
 		<% end %>
 	</li>

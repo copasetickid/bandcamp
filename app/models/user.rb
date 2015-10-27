@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
 
 
   enum role: [ :user, :admin ]
+
+  def is_admin?
+  	 admin?
+  end
 end

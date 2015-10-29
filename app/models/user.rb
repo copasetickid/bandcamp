@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   def is_admin?
   	 admin?
   end
+
+  def to_s
+  	"#{email} (#{role.titleize})"
+  end
 end

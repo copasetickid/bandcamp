@@ -5,11 +5,11 @@ RSpec.feature "Users can edit existing projects" do
 	let(:project) { create(:project) }
 
 	before do
-		login_as(user)
-		assign_role!(user, :viewer, project)
+	  login_as(user)
+	  assign_role!(user, :manager, project)
 	  visit root_path
 	  click_link project.name
-	 	click_link "Edit Project"
+	  click_link "Edit Project"
 	end
 
 	scenario 'with valid attributes' do

@@ -6,12 +6,29 @@ describe ProjectPolicy do
 
   subject { ProjectPolicy }
 
-  permissions ".scope" do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
+  context "policy_scope" do 
+    subject { Pundit.policy_scope(user, Project) }
 
-  permissions :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    let!(:project) { create(:project) }
+    let(:user) { create(:user) }
+
+    it "is empty for anonymous users" do 
+      expect(Pundit.policy_scope(nil, Project)).to be_empty
+    end
+
+    it "includes projects a user is allowed to view" do 
+      assign_role!(user, :viewer, project)
+      expect(subject).to include(project) 
+    end
+
+    it "doesn't incude projects a user is not allowed to view" do 
+      expect(subject).to be_empty
+    end
+
+    it "returns all projects for admins" do 
+      user.admin! 
+      expect(subject).to include(project)
+    end
   end
 
   permissions :show? do
@@ -33,7 +50,7 @@ describe ProjectPolicy do
     end
 
     it "allows managers of the project" do
-      assign_role!(user, :manger, project)
+      assign_role!(user, :manager, project)
       expect(subject).to permit(user, project)
     end
 
@@ -44,17 +61,8 @@ describe ProjectPolicy do
 
     it "does not allow users assigned to other projects" do
       other_project = create(:project)
-      assign_role!(user, :manger, other_project)
+      assign_role!(user, :manager, other_project)
       expect(subject).not_to permit(user, project)
     end
-  end
-
-  permissions :update? do
-
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :destroy? do
-    pending "add some examples to (or delete) #{__FILE__}"
   end
 end

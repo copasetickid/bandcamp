@@ -2,9 +2,8 @@ class ProjectsController < ApplicationController
 	before_action :project_lookup, only: [:edit, :show, :update]
 
 	def index
-		@projects = Project.all
+		@projects = policy_scope(Project)
 	end
-
 
 	def edit
 	end
@@ -12,7 +11,6 @@ class ProjectsController < ApplicationController
 	def show
 		authorize @project, :show?
 	end
-
 
 	def update
 		if @project.update(project_params)

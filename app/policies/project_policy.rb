@@ -9,10 +9,10 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def show?
-    user.try(:is_admin?) || record.roles.exists?(user_id: user)
+    user.try(:is_admin?) || record.has_member?(user)
   end
 
   def update?
-  	user.try(:is_admin?) || record.roles.exists?(user_id: user, role: 2)
+  	user.try(:is_admin?) || record.has_manager?(user)
   end
 end

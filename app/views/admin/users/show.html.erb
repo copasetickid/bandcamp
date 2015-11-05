@@ -17,7 +17,6 @@
 <% if @user.roles.any? %>
 <ul>
 	<% @user.roles.each do |role| %>
-	<% pry %>
 		<li><%= role.project.name %>: <%= role.role.titleize %></li>
 	<% end %>
 </ul>

@@ -18,6 +18,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise', '~> 3.4.1'
+gem 'pundit', '~> 0.3.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -33,9 +34,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'pry'
   gem 'rspec-rails', '~> 3.3.0'
+  gem 'terminal-notifier-guard', '~> 1.6.1'
 end
 
 group :development do
@@ -50,4 +51,5 @@ group :test do
 	gem 'capybara', '~> 2.5'
 	gem "capybara-webkit"
 	gem "factory_girl_rails", "~> 4.5"
+  gem 'database_cleaner'
 end

@@ -5,11 +5,14 @@ RSpec.feature "Users can view tickets" do
     author = create(:user)
 
     @pringles = create(:project, name: "Pringles")
+    assign_role!(author, :viewer, @pringles)
     create(:ticket, project: @pringles, author: author, name: "Make it shiny!", description: "Gradients! Starbursts! Oh my!")
 
     chrome = create(:project, name: "Google Chrome")
-    create(:ticket, project: chrome,author: author, name: "Standards compliance", description: "Isn't a joke.")
+    assign_role!(author, :viewer, chrome)
+    create(:ticket, project: chrome, author: author, name: "Standards compliance", description: "Isn't a joke.")
 
+    login_as(author)
     visit root_path
   end
 

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   enum role: [ :user, :admin ]
 
   scope :excluding_archived, lambda { where(archived_at: nil) }
+  has_many :roles
 
   def is_admin?
   	 admin?
@@ -26,5 +27,9 @@ class User < ActiveRecord::Base
 
   def inactive_message
   	archived_at.nil? ? super : :archived
+  end
+
+  def role_on(project) 
+    roles.find_by(project_id: project).try(:name)
   end
 end

@@ -2,24 +2,25 @@ class ProjectsController < ApplicationController
 	before_action :project_lookup, only: [:edit, :show, :update]
 
 	def index
-		@projects = Project.all
+		@projects = policy_scope(Project)
 	end
 
-
 	def edit
+		authorize @project, :update?
 	end
 
 	def show
+		authorize @project, :show?
 	end
 
-
 	def update
+		authorize @project, :update?
 		if @project.update(project_params)
-			flash[:notice] = "Project has been updated."
-			redirect_to @project
+		   flash[:notice] = "Project has been updated."
+		   redirect_to @project
 		else
-			flash.now[:alert] = "Project has not been updated."
-			render "edit"
+		  flash.now[:alert] = "Project has not been updated."
+		  render "edit"
 		end
 	end
 

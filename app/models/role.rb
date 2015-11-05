@@ -5,6 +5,6 @@ class Role < ActiveRecord::Base
   enum role: [ :viewer, :editor, :manager ]
 
   def self.available_roles
-  	%w(manager, editor, viewer)
+  	%w(manager editor viewer)
   end
 end

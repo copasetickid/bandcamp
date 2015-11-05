@@ -36,6 +36,7 @@ class Admin::UsersController < Admin::ApplicationController
     User.transaction do     
       @user.roles.clear
       role_data = params.fetch(:roles, [])
+
       role_data.each do |project_id, role_name| 
         if role_name.present?
           available_roles = Role.roles

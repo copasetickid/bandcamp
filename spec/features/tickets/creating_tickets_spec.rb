@@ -51,4 +51,17 @@ RSpec.feature "Users can create new tickets" do
 			expect(page).to have_content "track.txt"
 		end  
 	end
+
+	scenario "persiting file uploads across form displays" do 
+		attach_file "File", "spec/fixtures/track.txt" 
+		click_button "Create Ticket"
+
+		fill_in "Name", with: "Don't Panic"
+		fill_in "Description", with: "Add 11th track from Delrium"
+		click_button "Create Ticket" 
+
+		within "#ticket .attachment" do 
+			expect(page).to have_content "track.txt"
+		end
+	end
 end

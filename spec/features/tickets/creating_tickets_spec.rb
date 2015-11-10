@@ -42,26 +42,45 @@ RSpec.feature "Users can create new tickets" do
 	scenario "with an attachment" do 
 		fill_in "Name", with: "On my mind"
 		fill_in "Description", with: "5th track from Delrium"
-		attach_file "File", "spec/fixtures/track.txt"
+		attach_file "File #1", "spec/fixtures/track.txt"
 		click_button "Create Ticket"
 
 		expect(page).to have_content "Ticket has been created."
 
-		within "#ticket .attachment" do
+		within "#ticket .attachments" do
 			expect(page).to have_content "track.txt"
 		end  
 	end
 
 	scenario "persiting file uploads across form displays" do 
-		attach_file "File", "spec/fixtures/track.txt" 
+		attach_file "File #1", "spec/fixtures/track.txt" 
 		click_button "Create Ticket"
 
 		fill_in "Name", with: "Don't Panic"
 		fill_in "Description", with: "Add 11th track from Delrium"
 		click_button "Create Ticket" 
 
-		within "#ticket .attachment" do 
+		within "#ticket .attachments" do 
 			expect(page).to have_content "track.txt"
+		end
+	end
+
+	scenario "with multiple attachments" do 
+		fill_in "Name", with: "Set Fire to the Rain" 
+		fill_in "Description", with: "Track 5 from 21"
+
+		attach_file "File #1", Rails.root.join("spec/fixtures/track.txt")
+		attach_file "File #2", Rails.root.join("spec/fixtures/sorry.txt")
+		attach_file "File #3", Rails.root.join("spec/fixtures/hello.txt")
+
+		click_button "Create Ticket"
+
+		expect(page).to have_content "Ticket has been created."
+
+		within "#ticket .attachments" do 
+			expect(page).to have_content "track.txt"
+			expect(page).to have_content "sorry.txt"
+			expect(page).to have_content "hello.txt"
 		end
 	end
 end

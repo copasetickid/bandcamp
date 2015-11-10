@@ -48,7 +48,7 @@ RSpec.feature "Users can create new tickets" do
 		expect(page).to have_content "Ticket has been created."
 
 		within "#ticket .attachment" do
-			expect(page).to have_content "speed.txt"
+			expect(page).to have_content "track.txt"
 		end  
 	end
 end

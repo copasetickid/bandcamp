@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise', '~> 3.4.1'
 gem 'pundit', '~> 0.3.0'
+gem 'carrierwave', '~> 0.10.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.

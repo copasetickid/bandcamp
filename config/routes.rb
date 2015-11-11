@@ -6,10 +6,12 @@ Rails.application.routes.draw do
     resources :tickets
   end
 
+  resources :attachments, only: [:show]
+
   namespace :admin do
     root "application#index"
     resources :projects, only: [:new, :create, :destroy]
-    resources :users do 
+    resources :users do
       member do
         patch :archive
       end

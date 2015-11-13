@@ -65,21 +65,20 @@ RSpec.feature "Users can create new tickets" do
 		end
 	end
 
-	scenario "with multiple attachments" do 
+	scenario "with multiple attachments", js: true do 
 		fill_in "Name", with: "Set Fire to the Rain" 
 		fill_in "Description", with: "Track 5 from 21"
 
 		attach_file "File #1", Rails.root.join("spec/fixtures/track.txt")
-		attach_file "File #2", Rails.root.join("spec/fixtures/sorry.txt")
-		attach_file "File #3", Rails.root.join("spec/fixtures/hello.txt")
+		click_link "Add another file"
 
+		attach_file "File #2", Rails.root.join("spec/fixtures/hello.txt")
 		click_button "Create Ticket"
 
 		expect(page).to have_content "Ticket has been created."
 
 		within "#ticket .attachments" do 
 			expect(page).to have_content "track.txt"
-			expect(page).to have_content "sorry.txt"
 			expect(page).to have_content "hello.txt"
 		end
 	end

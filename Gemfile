@@ -13,6 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
+gem 'coffee-rails'
 gem 'simple_form'
 gem 'devise', '~> 3.4.1'
 gem 'pundit', '~> 0.3.0'

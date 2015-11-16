@@ -13,3 +13,5 @@ before_script:
   - bower install
 addons:
   postgresql: "9.3"
+notifications:
+  slack: copasetic-makers:wCs392n9a89cWdB4uqhmpwOM

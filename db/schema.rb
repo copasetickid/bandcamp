@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110200102) do
+ActiveRecord::Schema.define(version: 20151116220158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,20 @@ ActiveRecord::Schema.define(version: 20151110200102) do
   end
 
   add_index "attachments", ["ticket_id"], name: "index_attachments_on_ticket_id", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "ticket_id"
+    t.integer  "author_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "state_id"
+    t.integer  "previous_state_id"
+  end
+
+  add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
+  add_index "comments", ["previous_state_id"], name: "index_comments_on_previous_state_id", using: :btree
+  add_index "comments", ["ticket_id"], name: "index_comments_on_ticket_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -43,6 +57,14 @@ ActiveRecord::Schema.define(version: 20151110200102) do
   add_index "roles", ["project_id"], name: "index_roles_on_project_id", using: :btree
   add_index "roles", ["user_id"], name: "index_roles_on_user_id", using: :btree
 
+  create_table "states", force: :cascade do |t|
+    t.string   "name"
+    t.string   "color"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "default",    default: false
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -50,10 +72,12 @@ ActiveRecord::Schema.define(version: 20151110200102) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "author_id"
+    t.integer  "state_id"
   end
 
   add_index "tickets", ["author_id"], name: "index_tickets_on_author_id", using: :btree
   add_index "tickets", ["project_id"], name: "index_tickets_on_project_id", using: :btree
+  add_index "tickets", ["state_id"], name: "index_tickets_on_state_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -76,8 +100,13 @@ ActiveRecord::Schema.define(version: 20151110200102) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "attachments", "tickets"
+  add_foreign_key "comments", "states"
+  add_foreign_key "comments", "states", column: "previous_state_id"
+  add_foreign_key "comments", "tickets"
+  add_foreign_key "comments", "users", column: "author_id"
   add_foreign_key "roles", "projects"
   add_foreign_key "roles", "users"
   add_foreign_key "tickets", "projects"
+  add_foreign_key "tickets", "states"
   add_foreign_key "tickets", "users", column: "author_id"
 end

@@ -4,6 +4,7 @@
 
 <%= simple_form_for [ticket, comment] do |f| %>
   <%= f.input :text %>
+  <%= render "tags/form", f: f %>
   <% if policy(ticket).change_state? %>
   	<%= f.association :state %>
   <% end %>

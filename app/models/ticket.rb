@@ -9,11 +9,20 @@ class Ticket < ActiveRecord::Base
   has_many :attachments, dependent: :destroy
   accepts_nested_attributes_for :attachments, reject_if: :all_blank
   has_many :comments, dependent: :destroy
+  has_many :tag_tickets
+  has_many :tags, :through => :tag_tickets
 
   before_create :assign_default_state
 
   attr_accessor :tag_names
 
+  def tag_names=(names)
+    @tag_names = names 
+    names.split.each do |name|
+      self.tags << Tag.find_or_initialize_by(name: name)
+    end
+  end
+  
   private 
 
   def assign_default_state

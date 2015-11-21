@@ -38,3 +38,19 @@ blockquote {
   padding-bottom: 10px;
 }
 
+.tag {
+  @extend .state;
+  @extend .label-info;
+  margin-right: 10px;
+
+  a {
+    color: white;
+
+    &.remove {
+      font-family: "FontAweome";
+      @extend .fa-close;
+      margin-right: 0.5em;
+      text-decoration: none;
+    }
+  }
+}

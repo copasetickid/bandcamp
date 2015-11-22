@@ -1,7 +1,8 @@
 /** Libraries **/
 @import "bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
 @import "bootstrap-sass/assets/stylesheets/bootstrap";
-@import "fontawesome/css/font-awesome.css";
+@import "fontawesome/scss/font-awesome";
+@import "font-paths";
 
 /** App Styles **/
 @import "base";

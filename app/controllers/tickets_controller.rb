@@ -18,7 +18,14 @@ class TicketsController < ApplicationController
 	end
 
 	def create
-		@ticket = @project.tickets.build(ticket_params)
+		@ticket = @project.tickets.new 
+
+		whitelisted_params = ticket_params 
+		unless policy(@ticket).tag?
+			whitelisted_params.delete(:tag_names)
+		end
+		
+		@ticket.attributes = whitelisted_params
 		@ticket.author = current_user
 		authorize @ticket, :create?
 
@@ -63,7 +70,7 @@ class TicketsController < ApplicationController
 	end
 
 	def ticket_params
-		params.require(:ticket).permit(:name, :description,
+		params.require(:ticket).permit(:name, :description, :tag_names,
 			attachments_attributes: [:file, :file_cache])
 	end
 end

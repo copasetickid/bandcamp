@@ -7,7 +7,7 @@ RSpec.feature "Users can create new tickets" do
 	before do
 		login_as(user)
 		project = create(:project, name: "Google Chrome")
-		assign_role!(user, :editor, project)
+		assign_role!(user, :manager, project)
 		visit project_path(project)
 		click_link "New Ticket"
 	end
@@ -82,6 +82,19 @@ RSpec.feature "Users can create new tickets" do
 		within "#ticket .attachments" do 
 			expect(page).to have_content "track.txt"
 			expect(page).to have_content "hello.txt"
+		end
+	end
+
+	scenario "with associated tags" do 
+		fill_in "Name", with: "Non-standards compliance"
+		fill_in "Description", with: "My pages are not mobile friendly"
+		fill_in "Tags", with: "responsive css"
+		click_button "Create Ticket"
+
+		expect(page).to have_content "Ticket has been created."
+		within "#ticket #tags" do 
+			expect(page).to have_content "responsive"
+			expect(page).to have_content "css"
 		end
 	end
 end

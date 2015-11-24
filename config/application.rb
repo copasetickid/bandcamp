@@ -33,6 +33,7 @@ module Bandcamp
     config.active_record.raise_in_transactional_callbacks = true
     #Bower configuration
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+    config.autoload_paths << Rails.root.join('services')
     config.assets.precompile << Proc.new { |path| path =~ /font-awesome\/fonts/ and File.extname(path).in?(['.otf', '.eot', '.svg', '.ttf', '.woff']) }
   end
 end

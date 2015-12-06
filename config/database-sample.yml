@@ -54,4 +54,5 @@ production:
   encoding: unicode
   database: bandcamp_production
   pool: 5
-
+  username: <%= ENV['bandcamp_prod'] %>
+  password: <%= ENV['bandcamp_db_password'] %>

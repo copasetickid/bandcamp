@@ -98,6 +98,8 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    json-schema (2.5.2)
+      addressable (~> 2.3.8)
     launchy (2.4.3)
       addressable (~> 2.3)
     loofah (2.0.3)
@@ -229,6 +231,7 @@ DEPENDENCIES
   email_spec (~> 1.6.0)
   factory_girl_rails (~> 4.5)
   jquery-rails
+  json-schema
   pg
   pry
   pundit (~> 0.3.0)

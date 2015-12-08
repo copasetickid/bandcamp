@@ -52,4 +52,5 @@ group :test do
 	gem "factory_girl_rails", "~> 4.5"
   gem 'database_cleaner'
   gem 'selenium-webdriver', "~> 2.45"
+  gem "json-schema"
 end

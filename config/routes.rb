@@ -35,4 +35,10 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  namespace :api do 
+    resources :projects, only: [] do 
+      resources :tickets
+    end
+  end
 end

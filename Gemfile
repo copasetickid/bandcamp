@@ -19,9 +19,7 @@ gem 'devise', '~> 3.4.1'
 gem 'pundit', '~> 0.3.0'
 gem 'carrierwave', '~> 0.10.0'
 gem 'email_spec', '~> 1.6.0'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+gem "active_model_serializers", "~> 0.9.3"
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 

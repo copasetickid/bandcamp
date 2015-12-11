@@ -9,7 +9,7 @@
         "description",
         "name",
         "id",
-        "project_id"
+        "project_id",
       ],
       "properties" : {
         "author_id" : { "type" : "integer" },

@@ -9,7 +9,7 @@ RSpec.describe "Tickets API" do
 	end
 
 	before do 
-		assign_role!(user, :manager, :project)
+		assign_role!(user, :manager, project)
 		user.generate_api_key
 	end
 
@@ -22,7 +22,7 @@ RSpec.describe "Tickets API" do
 			get api_project_ticket_path(project, ticket, format: :json), {}, headers 
 			expect(response.status).to eq 200
 
-			expect(response.body).to  match_response_schema("ticket")
+			expect(response).to  match_response_schema("ticket")
 		end
 	end
 end

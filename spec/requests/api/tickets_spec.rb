@@ -22,7 +22,9 @@ RSpec.describe "Tickets API" do
 			get api_project_ticket_path(project, ticket, format: :json), {}, headers 
 			expect(response.status).to eq 200
 
-			expect(response).to  match_response_schema("ticket")
+			#expect(response).to  match_response_schema("ticket")
+			json_response = TicketSerializer.new(ticket).to_json
+			expect(response.body).to eq json_response
 		end
 	end
 end

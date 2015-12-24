@@ -44,6 +44,7 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'guard-rspec', require: false
 end
 
 group :test do
@@ -53,4 +54,5 @@ group :test do
   gem 'database_cleaner'
   gem 'selenium-webdriver', "~> 2.45"
   gem "json-schema"
+  gem 'shoulda-matchers', '~> 3.0'
 end

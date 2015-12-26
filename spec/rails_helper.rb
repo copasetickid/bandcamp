@@ -41,6 +41,7 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.include Devise::TestHelpers, :type => :view
   config.include Warden::Test::Helpers
+  config.include Requests::JsonHelpers, type: :request
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -57,7 +58,7 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
-  
+
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end

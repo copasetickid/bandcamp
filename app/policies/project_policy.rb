@@ -8,6 +8,14 @@ class ProjectPolicy < ApplicationPolicy
     end
   end
 
+  def create?
+    user.try(:is_admin?)
+  end
+
+  def destroy?
+    user.try(:is_admin?)
+  end
+
   def show?
     user.try(:is_admin?) || record.has_member?(user)
   end

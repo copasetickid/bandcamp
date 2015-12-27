@@ -5,7 +5,7 @@
   }
 }
 
-.btn-login {
+.btn-login, .btn-signup {
   @extend .btn;
   @extend .btn-success;
 }

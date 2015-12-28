@@ -13,7 +13,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="collapse">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
         <li class="<%= "active" if current_page? ("/") %>">
           <%= link_to "Home", root_path %>
         </li>
@@ -29,18 +29,12 @@
             <%= link_to "Sign in", new_user_session_path %>
           </li>
         <% end %>
-      </ul>
 
-      <% if user_signed_in? %>
-        <div class="navbar-right">
-          <p class="navbar-text">
-            Signed in as <%= current_user.email %>
-          </p>
-          <ul class="nav navbar-nav">
-            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-          </ul>
-        </div>
-      <% end %>
+        <% if user_signed_in? %>
+          <li> <p class="navbar-text"> Signed in as <%= current_user.email %> </p> </li>
+          <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <% end %>
+      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-->
 </nav>

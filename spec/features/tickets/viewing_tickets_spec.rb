@@ -13,7 +13,7 @@ RSpec.feature "Users can view tickets" do
     create(:ticket, project: chrome, author: author, name: "Standards compliance", description: "Isn't a joke.")
 
     login_as(author)
-    visit root_path
+    visit projects_path
   end
 
   scenario "for a given project" do

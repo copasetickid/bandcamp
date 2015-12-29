@@ -57,7 +57,7 @@ RSpec.feature "Users can only see the appropriate links" do
 		before { login_as(admin) }
 
 		scenario "can see the New Project link" do
-			visit root_path
+			visit projects_path
 			expect(page).to have_link "New Project"
 		end
 

@@ -8,7 +8,7 @@ RSpec.feature "Users can delete projects" do
   scenario "successfully" do
     project = create(:project)
 
-    visit root_path
+    visit projects_path
     click_link project.name
     click_link "Delete Project"
 

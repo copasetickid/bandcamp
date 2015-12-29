@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "Users can create new projects" do
 	before do
 		login_as(create(:user, :admin))
-		visit root_path
+		visit projects_path
 		click_link "New Project"
 	end
 

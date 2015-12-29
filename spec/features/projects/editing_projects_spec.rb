@@ -7,7 +7,7 @@ RSpec.feature "Users can edit existing projects" do
 	before do
 	  login_as(user)
 	  assign_role!(user, :manager, project)
-	  visit root_path
+	  visit projects_path
 	  click_link project.name
 	  click_link "Edit Project"
 	end

@@ -1,18 +1,34 @@
-<header>
-  <h1>Sign Up</h1>
-</header>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3 form-box">
+    <div class="form-top">
+      <header>
+        <h1>Sign Up</h1>
+      </header>
+    </div>
+    <div class="form-bottom signup-form">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email, required: true, autofocus: true %>
+          <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
+          <%= f.input :password_confirmation, required: true %>
+        </div>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
-    <%= f.input :password_confirmation, required: true %>
+        <div class="form-actions">
+          <%= f.button :submit, "Sign up", class: "btn-signup" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
-  </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3 form-box">
+
+    <%- if controller_name != 'sessions' %>
+      <span>Already have an account?</span>
+      <%= link_to "Log in", new_session_path(resource_name) %><br />
+    <% end -%>
+  </div>
+</div>

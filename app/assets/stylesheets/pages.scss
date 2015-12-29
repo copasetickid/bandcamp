@@ -1,0 +1,57 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.home-header {
+	background: image-url("slider2.jpg") no-repeat center center;
+	background-color: #A8C0D8;
+	background-size: cover;
+	display: table;
+	height: calc(100vh - 50px);
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+
+	
+
+
+}
+
+.header-wrapper .header-overlay {
+    min-height: 100vh;
+    /*min-width: 100vw;*/
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    left: 0;
+}   
+
+.header-wrapper .header-wrapper-inner {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.header-wrapper .header-wrapper-inner .welcome-speech {
+	margin-top: 7em;
+}
+
+.header-wrapper .header-wrapper-inner .welcome-speech h1 {
+	color: $smoke-white;
+    font-size: 35px;
+    font-weight: 100;
+    letter-spacing: 6px;
+    margin-bottom: 12px;
+    margin-top: 0;
+    text-transform: uppercase;
+}
+
+.header-wrapper .header-wrapper-inner .welcome-speech p {
+	color: $smoke-white;
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-bottom: 4.2em;
+}
+

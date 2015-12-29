@@ -21,15 +21,16 @@
   </style>
 </head>
 <body>
-  <div class="container">
+  <%= render 'shared/nav' %>
+  <div class="main">
     <% flash.each do |key, message| %>
   	 <div class="alert alert-<%= key %>">
         <%= message %>
       </div>
     <% end %>
+    <%= yield %>
   </div>
-  <%= render 'shared/nav' %>
-  <%= yield %>
+
 
 </body>
 </html>

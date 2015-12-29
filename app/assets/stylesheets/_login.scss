@@ -1,0 +1,11 @@
+.login-form {
+
+  .checkbox input[type="checkbox"] {
+    margin-left: 0;
+  }
+}
+
+.btn-login, .btn-signup {
+  @extend .btn;
+  @extend .btn-success;
+}

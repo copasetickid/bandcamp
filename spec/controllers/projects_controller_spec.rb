@@ -19,4 +19,24 @@ RSpec.describe ProjectsController, type: :controller do
     message = "You aren't allowed to do that."
     expect(flash[:alert]).to eq message
   end
+
+   describe "POST #members" do 
+    let(:user) { create(:user) }
+    let(:tori) { create(:user) }
+    let(:project) { create(:project) }
+
+    context "as an a manager of a project" do
+      before do 
+        assign_role!(user, :manager, project)
+        sign_in user
+      end
+
+      it "can add users to the project" do 
+        post :collaborators, id: project
+        project.reload
+        expect(project.roles.length).to eq 2
+      end
+
+    end
+  end
 end

@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-	before_action :project_lookup, only: [:edit, :show, :update]
+	before_action :project_lookup, only: [:edit, :show, :update, :collaborators]
 
 	def index
 		@projects = policy_scope(Project)
@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
 
 	def edit
 		authorize @project, :update?
+		@available_users = User.all
 	end
 
 	def show
@@ -22,6 +23,12 @@ class ProjectsController < ApplicationController
 		  flash.now[:alert] = "Project has not been updated."
 		  render "edit"
 		end
+	end
+
+	def collaborators
+		authorize @project, :update?
+		
+		role_role = params.fetch(:roles, [])
 	end
 
 	private

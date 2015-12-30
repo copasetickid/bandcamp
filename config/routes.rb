@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#home'
   resources :projects, only: [:index, :show, :edit, :update] do
+    member do 
+      post :collaborators
+    end
+
     resources :tickets do
       member do
         post :watch
